@@ -1,0 +1,11 @@
+//Fahrzeug[count(Finanzierungsangebot[Kreditsumme > 10000]) >= 5]/Preis/text()
+
+//Fahrzeugtypen[@FTID = //Fahrzeug[(Laufleistung div (number(substring(string(fn:current-date()), 0, 5)) - Baujahr)) > 20000]/Fahrzeugtyp]/Modell
+
+//Termin[Fahrzeug = //Fahrzeug[Fahrzeugtyp = //Fahrzeugtypen[Hersteller = "VW"]/@FTID]/@FID and Art = "Probefahrt"][1]/@TID
+
+
+for $person in //Person return $person[(count(//Verfasser[./text() = $person/@PID]) > 3 and count(//Empfänger[./text() = $person/@PID]) > 3)]/Nachname
+
+
+//Termin[number(Datum/substring(string(text()), 6, 2)) = 01 or number(Datum/substring(string(text()), 6, 2)) = 02]/@TID

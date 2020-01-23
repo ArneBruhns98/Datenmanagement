@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Gebrauchtwagenplattform xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./Gebrauchtwagenplattform.xsd">
+	<PersonenListe>
+		<Person PID="P1">
+			<Vorname>Murat</Vorname>
+			<Nachname>Möller</Nachname>
+			<Geburtsdatum>1963-02-03</Geburtsdatum>
+			<Adresse>
+				<Strasse>Anschützstraße</Strasse>
+				<Hausnummer>12</Hausnummer>
+				<PLZ>23554</PLZ>
+				<Ort>Lübeck</Ort>
+			</Adresse>
+			<eMailadresse>murat.moeller@stud.th-luebeck.de</eMailadresse>
+		</Person>
+		<Person PID="P2">
+			<Vorname>Dennis</Vorname>
+			<Nachname>Kornelsen</Nachname>
+			<Geburtsdatum>1999-12-21</Geburtsdatum>
+			<Adresse>
+				<Strasse>Maria-Goeppert-Straße</Strasse>
+				<Hausnummer>13</Hausnummer>
+				<PLZ>23654</PLZ>
+				<Ort>Meppen</Ort>
+			</Adresse>
+			<Telefonnr.>0451123456</Telefonnr.>
+			<eMailadresse>dennis.po@google.de</eMailadresse>
+		</Person>
+		<Person PID="P3">
+			<Vorname>Bob</Vorname>
+			<Nachname>Alice</Nachname>
+			<Geburtsdatum>1887-05-04</Geburtsdatum>
+			<Adresse>
+				<Strasse>Hamburger Straße</Strasse>
+				<Hausnummer>1887</Hausnummer>
+				<PLZ>15478</PLZ>
+				<Ort>München</Ort>
+			</Adresse>
+			<eMailadresse>bob@alice.de</eMailadresse>
+		</Person>
+		<Person PID="P4">
+			<Vorname>Henrik</Vorname>
+			<Nachname>Günther</Nachname>
+			<Geburtsdatum>1995-12-11</Geburtsdatum>
+			<Adresse>
+				<Strasse>Zackstraße</Strasse>
+				<Hausnummer>65</Hausnummer>
+				<PLZ>69875</PLZ>
+				<Ort>Epfendorf</Ort>
+			</Adresse>
+			<eMailadresse>h.g.@alice.de</eMailadresse>
+		</Person>
+		<Person PID="P5">
+			<Vorname>Sarah</Vorname>
+			<Nachname>Niemann</Nachname>
+			<Geburtsdatum>1998-06-04</Geburtsdatum>
+			<Adresse>
+				<Strasse>Dorfstraße</Strasse>
+				<Hausnummer>69</Hausnummer>
+				<PLZ>23554</PLZ>
+				<Ort>Lübeck</Ort>
+			</Adresse>
+			<Telefonnr.>0190-1234455</Telefonnr.>
+			<eMailadresse>sarah@hotmail.de</eMailadresse>
+		</Person>
+		<Person PID="P6">
+			<Vorname>Chantal</Vorname>
+			<Nachname>Möhring</Nachname>
+			<Geburtsdatum>1996-01-16</Geburtsdatum>
+			<Adresse>
+				<Strasse>Hauptstraße</Strasse>
+				<Hausnummer>3</Hausnummer>
+				<PLZ>22222</PLZ>
+				<Ort>Hammoor</Ort>
+			</Adresse>
+			<eMailadresse>c.m@hotmail.de</eMailadresse>
+		</Person>
+	</PersonenListe>
+	<FahrzeugListe>
+		<Fahrzeug FID="F1">
+			<Farbe>blau</Farbe>
+			<Laufleistung>23344</Laufleistung>
+			<Schäden>Blechschaden vorne rechts</Schäden>
+			<Fahrzeugtyp>FT1</Fahrzeugtyp>
+			<Preis>13450</Preis>
+			<Baujahr>2015</Baujahr>
+			<Finanzierungsangebot>
+				<MonatlicheRate>350</MonatlicheRate>
+				<Zinssatz>8</Zinssatz>
+				<Laufzeit>48</Laufzeit>
+				<Kreditsumme>11450</Kreditsumme>
+				<Anzahlung>2000</Anzahlung>
+			</Finanzierungsangebot>
+			<Finanzierungsangebot>
+				<MonatlicheRate>250</MonatlicheRate>
+				<Zinssatz>2</Zinssatz>
+				<Laufzeit>60</Laufzeit>
+				<Kreditsumme>13450</Kreditsumme>
+			</Finanzierungsangebot>
+			<Finanzierungsangebot>
+				<MonatlicheRate>560</MonatlicheRate>
+				<Zinssatz>1</Zinssatz>
+				<Laufzeit>24</Laufzeit>
+				<Kreditsumme>13450</Kreditsumme>
+			</Finanzierungsangebot>
+			<Finanzierungsangebot>
+				<MonatlicheRate>1000</MonatlicheRate>
+				<Zinssatz>0</Zinssatz>
+				<Laufzeit>12</Laufzeit>
+				<Kreditsumme>16000</Kreditsumme>
+			</Finanzierungsangebot>
+			<Finanzierungsangebot>
+				<MonatlicheRate>6</MonatlicheRate>
+				<Zinssatz>1</Zinssatz>
+				<Laufzeit>96</Laufzeit>
+				<Kreditsumme>13555</Kreditsumme>
+			</Finanzierungsangebot>
+		</Fahrzeug>
+		<Fahrzeug FID="F2">
+			<Farbe>lila</Farbe>
+			<Laufleistung>150000</Laufleistung>
+			<Fahrzeugtyp>FT2</Fahrzeugtyp>
+			<Preis>3500</Preis>
+			<Baujahr>2018</Baujahr>
+		</Fahrzeug>
+		<Fahrzeug FID="F3">
+			<Farbe>brilliant blau</Farbe>
+			<Laufleistung>66999</Laufleistung>
+			<Schäden>Radlauf hinten rechts Kratzer</Schäden>
+			<Fahrzeugtyp>FT3</Fahrzeugtyp>
+			<Preis>6999</Preis>
+			<Baujahr>2005</Baujahr>
+		</Fahrzeug>
+		<Fahrzeug FID="F4">
+			<Farbe>rot</Farbe>
+			<Laufleistung>12111</Laufleistung>
+			<Fahrzeugtyp>FT4</Fahrzeugtyp>
+			<Preis>250000</Preis>
+			<Baujahr>2016</Baujahr>
+			<Finanzierungsangebot>
+				<MonatlicheRate>12500</MonatlicheRate>
+				<Zinssatz>2</Zinssatz>
+				<Laufzeit>48</Laufzeit>
+				<Kreditsumme>250000</Kreditsumme>
+				<Anzahlung>100000</Anzahlung>
+			</Finanzierungsangebot>
+			<Finanzierungsangebot>
+				<MonatlicheRate>250000</MonatlicheRate>
+				<Zinssatz>24.3</Zinssatz>
+				<Laufzeit>60</Laufzeit>
+				<Kreditsumme>300000</Kreditsumme>
+			</Finanzierungsangebot>
+			<Finanzierungsangebot>
+				<MonatlicheRate>2</MonatlicheRate>
+				<Zinssatz>1</Zinssatz>
+				<Laufzeit>90</Laufzeit>
+				<Kreditsumme>457774</Kreditsumme>
+			</Finanzierungsangebot>
+			<Finanzierungsangebot>
+				<MonatlicheRate>1000</MonatlicheRate>
+				<Zinssatz>11</Zinssatz>
+				<Laufzeit>12</Laufzeit>
+				<Kreditsumme>3577777</Kreditsumme>
+			</Finanzierungsangebot>
+			<Finanzierungsangebot>
+				<MonatlicheRate>5444</MonatlicheRate>
+				<Zinssatz>1</Zinssatz>
+				<Laufzeit>96</Laufzeit>
+				<Kreditsumme>656454</Kreditsumme>
+			</Finanzierungsangebot>
+		</Fahrzeug>
+		<Fahrzeug FID="F5">
+			<Farbe>Grün</Farbe>
+			<Laufleistung>123555</Laufleistung>
+			<Fahrzeugtyp>FT1</Fahrzeugtyp>
+			<Preis>20000</Preis>
+			<Baujahr>2017</Baujahr>
+		</Fahrzeug>
+	</FahrzeugListe>
+	<FahrzeugtypenListe>
+		<Fahrzeugtypen FTID="FT1">
+			<Hersteller>VW</Hersteller>
+			<Modell>Golf</Modell>
+			<Leistung>200</Leistung>
+		</Fahrzeugtypen>
+		<Fahrzeugtypen FTID="FT2">
+			<Hersteller>Hyundai</Hersteller>
+			<Modell>i30</Modell>
+			<Leistung>98</Leistung>
+			<Ladevolumen>12</Ladevolumen>
+		</Fahrzeugtypen>
+		<Fahrzeugtypen FTID="FT3">
+			<Hersteller>Autounion</Hersteller>
+			<Modell>RT-1938</Modell>
+			<Leistung>12</Leistung>
+		</Fahrzeugtypen>
+		<Fahrzeugtypen FTID="FT4">
+			<Hersteller>Ferrari</Hersteller>
+			<Modell>F40</Modell>
+			<Leistung>580</Leistung>
+			<Ladevolumen>0</Ladevolumen>
+		</Fahrzeugtypen>
+	</FahrzeugtypenListe>
+	<KaufListe>
+		<Kauf KID="K1">
+			<Verkäufer>P1</Verkäufer>
+			<Käufer>P2</Käufer>
+			<Fahrzeug>F1</Fahrzeug>
+		</Kauf>
+		<Kauf KID="K2">
+			<Verkäufer>P3</Verkäufer>
+			<Käufer>P4</Käufer>
+			<Fahrzeug>F2</Fahrzeug>
+		</Kauf>
+		<Kauf KID="K3">
+			<Verkäufer>P5</Verkäufer>
+			<Käufer>P6</Käufer>
+			<Fahrzeug>F3</Fahrzeug>
+		</Kauf>
+		<Kauf KID="K4">
+			<Verkäufer>P6</Verkäufer>
+			<Käufer>P1</Käufer>
+			<Fahrzeug>F4</Fahrzeug>
+		</Kauf>
+	</KaufListe>
+	<BewertungsListe>
+		<Bewertung BID="B1">
+			<Kauf>K1</Kauf>
+			<Bewertungstext>Alles super, gerne wieder.</Bewertungstext>
+			<Verfasser>P2</Verfasser>
+			<Empfänger>P1</Empfänger>
+		</Bewertung>
+		<Bewertung BID="B2">
+			<Kauf>K2</Kauf>
+			<Bewertungstext>Beste Beinfreiheit und reinigt den Herd.</Bewertungstext>
+			<Verfasser>P4</Verfasser>
+			<Empfänger>P3</Empfänger>
+		</Bewertung>
+		<Bewertung BID="B3">
+			<Kauf>K3</Kauf>
+			<Bewertungstext>Meine Fingernägel sind abgebrochen. Nicht zu empfehlen!!!!1 Folgt mir auf Insta</Bewertungstext>
+			<Verfasser>P6</Verfasser>
+			<Empfänger>P5</Empfänger>
+		</Bewertung>
+		<Bewertung BID="B4">
+			<Kauf>K3</Kauf>
+			<Bewertungstext>Meine Fingernägel sind abgebrochen. Nicht zu empfehlen!!!!1 Folgt mir auf Insta</Bewertungstext>
+			<Verfasser>P6</Verfasser>
+			<Empfänger>P5</Empfänger>
+		</Bewertung>
+		<Bewertung BID="B5">
+			<Kauf>K3</Kauf>
+			<Bewertungstext>Meine Fingernägel sind abgebrochen. Nicht zu empfehlen!!!!1 Folgt mir auf Insta</Bewertungstext>
+			<Verfasser>P6</Verfasser>
+			<Empfänger>P5</Empfänger>
+		</Bewertung>
+		<Bewertung BID="B6">
+			<Kauf>K3</Kauf>
+			<Bewertungstext>Meine Fingernägel sind abgebrochen. Nicht zu empfehlen!!!!1 Folgt mir auf Insta</Bewertungstext>
+			<Verfasser>P6</Verfasser>
+			<Empfänger>P5</Empfänger>
+		</Bewertung>
+		<Bewertung BID="B7">
+			<Kauf>K4</Kauf>
+			<Bewertungstext>Tolles Auto.</Bewertungstext>
+			<Verfasser>P1</Verfasser>
+			<Empfänger>P6</Empfänger>
+		</Bewertung>
+		<Bewertung BID="B8">
+			<Kauf>K4</Kauf>
+			<Bewertungstext>Wirklich... tolles Auto.</Bewertungstext>
+			<Verfasser>P1</Verfasser>
+			<Empfänger>P6</Empfänger>
+		</Bewertung>
+		<Bewertung BID="B9">
+			<Kauf>K4</Kauf>
+			<Bewertungstext>Aber auch viel teuer.</Bewertungstext>
+			<Verfasser>P1</Verfasser>
+			<Empfänger>P6</Empfänger>
+		</Bewertung>
+		<Bewertung BID="B10">
+			<Kauf>K4</Kauf>
+			<Bewertungstext>Aber auch viel teuer. Echt jetzt.</Bewertungstext>
+			<Verfasser>P1</Verfasser>
+			<Empfänger>P6</Empfänger>
+		</Bewertung>
+	</BewertungsListe>
+	<TerminListe>
+		<Termin TID="T1">
+			<Verkäufer>P1</Verkäufer>
+			<Käufer>P2</Käufer>
+			<Art>Probefahrt</Art>
+			<Datum>2019-02-03</Datum>
+			<Uhrzeit>12:00:00</Uhrzeit>
+			<Ort>
+				<Strasse>Rewe Parkplatz Buntekuh</Strasse>
+				<Hausnummer>0</Hausnummer>
+				<PLZ>23644</PLZ>
+				<Ort>Lübeck</Ort>
+			</Ort>
+			<Fahrzeug>F2</Fahrzeug>
+		</Termin>
+		<Termin TID="T2">
+			<Verkäufer>P3</Verkäufer>
+			<Käufer>P4</Käufer>
+			<Art>Probefahrt</Art>
+			<Datum>2018-12-09</Datum>
+			<Uhrzeit>23:59:59</Uhrzeit>
+			<Ort>
+				<Strasse>Dunkle Ecke hinterm Dom</Strasse>
+				<Hausnummer>69</Hausnummer>
+				<PLZ>23552</PLZ>
+				<Ort>Lübeck</Ort>
+			</Ort>
+			<Fahrzeug>F1</Fahrzeug>
+		</Termin>
+		<Termin TID="T3">
+			<Verkäufer>P5</Verkäufer>
+			<Käufer>P6</Käufer>
+			<Art>Verhandlung</Art>
+			<Datum>2019-03-12</Datum>
+			<Uhrzeit>08:00:02</Uhrzeit>
+			<Ort>
+				<Strasse>Mönkhofer Weg</Strasse>
+				<Hausnummer>13</Hausnummer>
+				<PLZ>23562</PLZ>
+				<Ort>Lübeck</Ort>
+			</Ort>
+			<Fahrzeug>F3</Fahrzeug>
+		</Termin>
+		<Termin TID="T4">
+			<Verkäufer>P1</Verkäufer>
+			<Käufer>P2</Käufer>
+			<Art>Probefahrt</Art>
+			<Datum>2019-01-01</Datum>
+			<Uhrzeit>07:00:00</Uhrzeit>
+			<Ort>
+				<Strasse>Mönkhofer Weg</Strasse>
+				<Hausnummer>133</Hausnummer>
+				<PLZ>23562</PLZ>
+				<Ort>Lübeck</Ort>
+			</Ort>
+			<Fahrzeug>F1</Fahrzeug>
+		</Termin>
+	</TerminListe>
+</Gebrauchtwagenplattform>

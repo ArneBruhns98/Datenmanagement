@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2019 sp2 (x64) (http://www.altova.com) von F (Lübeck University of Applied Sciences) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:complexType name="Finanzierungsangebot">
+		<xs:sequence>
+			<xs:element name="MonatlicheRate" default="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Zinssatz" type="xs:decimal" default="0"/>
+			<xs:element name="Laufzeit" default="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<xs:maxInclusive value="96"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Kreditsumme" default="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Anzahlung" type="xs:nonNegativeInteger" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Gebrauchtwagenplattform">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="PersonenListe">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Person" type="Person" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="FahrzeugListe">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Fahrzeug" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Farbe" maxOccurs="unbounded">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="2"/>
+													<xs:maxLength value="25"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Laufleistung">
+											<xs:simpleType>
+												<xs:restriction base="xs:nonNegativeInteger">
+													<xs:maxInclusive value="999999"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Schäden" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="Fahrzeugtyp" type="xs:IDREF" minOccurs="0"/>
+										<xs:element name="Preis" type="xs:nonNegativeInteger" default="0"/>
+										<xs:element name="Baujahr" type="xs:nonNegativeInteger"/>
+										<xs:sequence>
+											<xs:element name="Finanzierungsangebot" type="Finanzierungsangebot" minOccurs="0" maxOccurs="25"/>
+										</xs:sequence>
+									</xs:sequence>
+									<xs:attribute name="FID" type="xs:ID" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="FahrzeugtypenListe">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Fahrzeugtypen" type="Fahrzeugtyp" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="KaufListe">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Kauf" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Verkäufer" type="xs:IDREF"/>
+										<xs:element name="Käufer" type="xs:IDREF"/>
+										<xs:element name="Fahrzeug" type="xs:IDREF"/>
+									</xs:sequence>
+									<xs:attribute name="KID" type="xs:ID" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="BewertungsListe">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Bewertung" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Kauf" type="xs:IDREF" minOccurs="0"/>
+										<xs:element name="Bewertungstext" type="xs:string"/>
+										<xs:element name="Verfasser" type="xs:IDREF"/>
+										<xs:element name="Empfänger" type="xs:IDREF"/>
+									</xs:sequence>
+									<xs:attribute name="BID" type="xs:ID" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TerminListe">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Termin" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Verkäufer" type="xs:IDREF"/>
+										<xs:element name="Käufer" type="xs:IDREF"/>
+										<xs:element name="Art" type="xs:string" minOccurs="0"/>
+										<xs:element name="Datum" type="xs:date"/>
+										<xs:element name="Uhrzeit" type="xs:time"/>
+										<xs:element name="Ort" type="Adresse"/>
+										<xs:element name="Fahrzeug" type="xs:IDREF"/>
+									</xs:sequence>
+									<xs:attribute name="TID" type="xs:ID" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Person">
+		<xs:sequence>
+			<xs:element name="Vorname">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Nachname">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Geburtsdatum" type="xs:date"/>
+			<xs:element name="Adresse" type="Adresse"/>
+			<xs:element name="Telefonnr." minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="([+][ ]?[1-9][0-9][ ]?[-]?[ ]?|[(]?[0][ ]?)[0-9]{3,4}[-)/ ]?[ ]?[1-9][-0-9 ]{3,16}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="eMailadresse">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="[^@]+@[^\.]+\..+"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="PID" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Adresse">
+		<xs:sequence>
+			<xs:element name="Strasse" type="xs:string"/>
+			<xs:element name="Hausnummer">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="([0-9]+)([^0-9]*)"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PLZ">
+				<xs:simpleType>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<xs:pattern value="[0-9]{5}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Ort">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Fahrzeugtyp">
+		<xs:sequence>
+			<xs:element name="Hersteller">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="2"/>
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Modell">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Leistung" type="xs:nonNegativeInteger"/>
+			<xs:element name="Ladevolumen" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:totalDigits value="5"/>
+						<xs:fractionDigits value="2"/>
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="FTID" type="xs:ID" use="required"/>
+	</xs:complexType>
+</xs:schema>

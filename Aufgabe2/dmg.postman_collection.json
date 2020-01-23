@@ -1,0 +1,1099 @@
+{
+	"info": {
+		"_postman_id": "13834cbc-89aa-435b-a7e1-c57209b9c86d",
+		"name": "dmg",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Person",
+			"item": [
+				{
+					"name": "Add Person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d0c6af2-8638-4f1e-81e1-f232bce0c5c7",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+									"});",
+									"",
+									"pm.test(\"Response has header\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response contains url\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"person\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"vorname\": \"Hansi\",\n\t\"nachname\": \"Meier\",\n\t\"geburtsdatum\": \"1978-05-09\",\n\t\"emailadresse\": \"heinz@gmx.de\",\n\t\"telefonnr\": \"1929222211\",\n\t\"address\":\n\t{\n\t\t\"strasse\": \"Heinziweg\",\n\t\t\"hausnummer\": \"98\",\n\t\t\"plz\": \"23542\",\n\t\t\"ort\": \"HL\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/person?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "bert",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Post zum erstellen einer neuen Person"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Persons",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "07463ad8-d414-4964-9b2f-a8524b5ba340",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test(\"Response has header\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response contains testData\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Birnenstrasse\");",
+									"    pm.expect(pm.response.text()).to.include(\"Dieter\");",
+									"    pm.expect(pm.response.text()).to.include(\"Murmle\");",
+									"    pm.expect(pm.response.text()).to.include(\"Nichtauffaellig\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/person?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "bert",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Person 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b463d841-f0e5-4ced-b4c3-1220837a26ab",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vorname\": \"Marvin\",\n    \"nachname\": \"Nilsic\",\n    \"geburtsdatum\": \"1988-09-09\",\n    \"emailadresse\": \"heinz@gmx.de\",\n    \"telefonnr\": \"19299222211\",\n    \"address\": {\n        \"strasse\": \"Jungenweg\",\n        \"hausnummer\": \"8\",\n        \"plz\": \"13442\",\n        \"ort\": \"HL\",\n        \"aid\": \"1\"\n    },\n    \"pid\": 1\n\t\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/person/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person id 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "41854274-e0c4-4977-8690-c3da3a72b108",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test(\"Response has header\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response contains testData\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Marvin\");",
+									"    pm.expect(pm.response.text()).to.include(\"heinz@gmx.de\");",
+									"    pm.expect(pm.response.text()).to.include(\"19299222211\");",
+									"    pm.expect(pm.response.text()).to.include(\"Jungenweg\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/person/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Person id 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed8aa677-4765-4000-b492-fccea42a31b2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/person/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redelete id 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c21c97b-b853-4160-aeeb-63d8ef53f4fe",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404); ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/person/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retry Modify on not present",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c356cb4a-654c-4272-863e-df54ee377aaf",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404); ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vorname\": \"Marvin\",\n    \"nachname\": \"Nilsic\",\n    \"geburtsdatum\": \"1988-09-09\",\n    \"emailadresse\": \"heinz@gmx.de\",\n    \"telefonnr\": \"19299222211\",\n    \"address\": {\n        \"strasse\": \"Jungenweg\",\n        \"hausnummer\": \"8\",\n        \"plz\": \"13442\",\n        \"ort\": \"HL\",\n        \"aid\": \"1\"\n    },\n    \"pid\": 1\n\t\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/person/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Adresse",
+			"item": [
+				{
+					"name": "Add Adresse",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1ca128ca-4e78-4759-8196-6b514fc2410b",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+									"});",
+									"",
+									"pm.test(\"Response has header\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response contains url\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"adresse\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\t{\n\t\t\"strasse\": \"Ritterweg\",\n\t\t\"hausnummer\": \"231\",\n\t\t\"plz\": \"23842\",\n\t\t\"ort\": \"HL\"\n\t}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/adresse?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adresse"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "bert",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Post zum erstellen einer neuen Person"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Adressen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "258d03c8-01c0-4c25-827e-cb5d6610bbb6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test(\"Response has header\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response contains testData\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Birnenstrasse\");",
+									"    pm.expect(pm.response.text()).to.include(\"10\");",
+									"    pm.expect(pm.response.text()).to.include(\"Luebeck\");",
+									"    pm.expect(pm.response.text()).to.include(\"4\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/adresse?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adresse"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "bert",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Adresse 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8172895a-f1d7-4ca1-8670-7f76982ec27c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"strasse\": \"Holdemaidweg\",\n        \"hausnummer\": \"69\",\n        \"plz\": \"23442\",\n        \"ort\": \"HL\",\n        \"aid\": \"1\"\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/adresse/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adresse",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Adresse id 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b5b87b0f-ee81-46e7-9d19-eb955fab4a02",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test(\"Response has header\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response contains testData\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Holdemaidweg\");",
+									"    pm.expect(pm.response.text()).to.include(\"69\");",
+									"    pm.expect(pm.response.text()).to.include(\"HL\");",
+									"    pm.expect(pm.response.text()).to.include(\"23442\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/adresse/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adresse",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Adresse id 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "30a4ebc8-02d1-4701-b66c-6742362eee14",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/adresse/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adresse",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redelete id 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a73e167e-471b-4004-bfd7-1a4ccd85394f",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404); ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/adresse/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adresse",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retry Modify on not present",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01e232fe-7e47-46d8-80b9-54283f3231a0",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404); ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"strasse\": \"Holdemaidweg\",\n        \"hausnummer\": \"69\",\n        \"plz\": \"23442\",\n        \"ort\": \"HL\",\n        \"aid\": \"1\"\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/adresse/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adresse",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Termin",
+			"item": [
+				{
+					"name": "Add Termin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "67cffd8a-25bc-430f-b0ab-a94496e50890",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+									"});",
+									"",
+									"pm.test(\"Response has header\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response contains url\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"termin\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"verkaeufer\": {\n        \"vorname\": \"Hansel\",\n        \"nachname\": \"Nilsc\",\n        \"geburtsdatum\": \"1888-09-09\",\n        \"emailadresse\": \"heinz@gmx.de\",\n        \"telefonnr\": \"19299222211\",\n        \"address\": {\n            \"strasse\": \"No Comment\",\n            \"hausnummer\": \"23\",\n            \"plz\": \"23442\",\n            \"ort\": \"HL\"\n        }\n    },\n    \"kaeufer\": {\n        \"vorname\": \"Martin\",\n        \"nachname\": \"Romaniso\",\n        \"geburtsdatum\": \"1878-01-12\",\n        \"emailadresse\": \"martin@roma.de\",\n        \"telefonnr\": \"177882211\",\n        \"address\": {\n            \"strasse\": \"Moenkhofer Weg\",\n            \"hausnummer\": \"23\",\n            \"plz\": \"21122\",\n            \"ort\": \"Kiel\"\n        }\n    },\n    \"art\": \"Probefahrt\",\n    \"datum\": \"2019-05-03\",\n    \"ort\": {\n        \"strasse\": \"Riemann Strasse\",\n        \"hausnummer\": \"42\",\n        \"plz\": \"344512\",\n        \"ort\": \"Hinterm Kaufhof\"\n    },\n    \"fahrzeug\": \"Polo\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/termin?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"termin"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "bert",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Post zum erstellen einer neuen Person"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Termin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d117cf12-d6c1-4826-9a8b-abe9a2f4fc62",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test(\"Response has header\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response contains testData\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Jana\");",
+									"    pm.expect(pm.response.text()).to.include(\"Probefahrt\");",
+									"    pm.expect(pm.response.text()).to.include(\"Polo\");",
+									"    pm.expect(pm.response.text()).to.include(\"heiner@gisela.com\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/termin?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"termin"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "bert",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Termin 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d0e4e1a-6f62-41ce-800d-496fbbff365c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"verkaeufer\": {\n        \"vorname\": \"Hansel\",\n        \"nachname\": \"Nilsc\",\n        \"geburtsdatum\": \"1888-09-09\",\n        \"emailadresse\": \"heinz@gmx.de\",\n        \"telefonnr\": \"19299222211\",\n        \"address\": {\n            \"strasse\": \"Distelweg\",\n            \"hausnummer\": \"23\",\n            \"plz\": \"23442\",\n            \"ort\": \"HL\"\n        }\n    },\n    \"kaeufer\": {\n        \"vorname\": \"Martin\",\n        \"nachname\": \"Romaniso\",\n        \"geburtsdatum\": \"1878-01-12\",\n        \"emailadresse\": \"martin@roma.de\",\n        \"telefonnr\": \"177882211\",\n        \"address\": {\n            \"strasse\": \"Moenkhofer Weg\",\n            \"hausnummer\": \"2\",\n            \"plz\": \"21122\",\n            \"ort\": \"Kiel\"\n        }\n    },\n    \"art\": \"Untersuchung\",\n    \"datum\": \"2019-05-03\",\n    \"ort\": {\n        \"strasse\": \"Bernoulli Strasse\",\n        \"hausnummer\": \"43\",\n        \"plz\": \"34412\",\n        \"ort\": \"Hinterm Bahnhof\"\n    },\n    \"fahrzeug\": \"Jetta\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/termin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"termin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Termin id 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b351f517-afb4-4df6-9e25-089674b4a175",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test(\"Response has header\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response contains testData\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Hansel\");",
+									"    pm.expect(pm.response.text()).to.include(\"Untersuchung\");",
+									"    pm.expect(pm.response.text()).to.include(\"Jetta\");",
+									"    pm.expect(pm.response.text()).to.include(\"heinz@gmx.de\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/termin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"termin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Termin 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8566854e-a813-4f52-890a-6f0e01add2c3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/termin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"termin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redelete id 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c58732cb-e7ca-47d9-9967-ad87cea4402b",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404); ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/termin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"termin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retry Modify on not present",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9aa857f0-2271-48fb-8bfc-034d7c0e726c",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404); ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"verkaeufer\": {\n        \"vorname\": \"Hansel\",\n        \"nachname\": \"Nilsc\",\n        \"geburtsdatum\": \"1888-09-09\",\n        \"emailadresse\": \"heinz@gmx.de\",\n        \"telefonnr\": \"19299222211\",\n        \"address\": {\n            \"strasse\": \"Distelweg\",\n            \"hausnummer\": \"23\",\n            \"plz\": \"23442\",\n            \"ort\": \"HL\"\n        }\n    },\n    \"kaeufer\": {\n        \"vorname\": \"Martin\",\n        \"nachname\": \"Romaniso\",\n        \"geburtsdatum\": \"1878-01-12\",\n        \"emailadresse\": \"martin@roma.de\",\n        \"telefonnr\": \"177882211\",\n        \"address\": {\n            \"strasse\": \"Moenkhofer Weg\",\n            \"hausnummer\": \"2\",\n            \"plz\": \"21122\",\n            \"ort\": \"Kiel\"\n        }\n    },\n    \"art\": \"Untersuchung\",\n    \"datum\": \"2019-05-03\",\n    \"ort\": {\n        \"strasse\": \"Bernoulli Strasse\",\n        \"hausnummer\": \"43\",\n        \"plz\": \"34412\",\n        \"ort\": \"Hinterm Bahnhof\"\n    },\n    \"fahrzeug\": \"Jetta\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/termin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"termin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
